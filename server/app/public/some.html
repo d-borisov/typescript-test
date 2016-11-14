@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Some title</title>
+</head>
+<body>
+
+<p>Some text!</p>
+<p id="xhr-result-greetings-via-interface"></p>
+<p id="xhr-result-greetings-via-class"></p>
+
+<script>
+    
+    getGreeting('/api/greetings-via-interface', 'xhr-result-greetings-via-interface');
+    getGreeting('/api/greetings-via-class', 'xhr-result-greetings-via-class');
+    
+    function getGreeting(url, id) {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.open('POST', url);
+        xmlhttp.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4) {
+                document.getElementById(id).innerHTML = readBody(xmlhttp);
+            }
+        };
+        xmlhttp.send(JSON.stringify({name: 'John', surname: 'Rambo'}));
+    }
+
+    function readBody(xhr) {
+        var data;
+        if (!xhr.responseType || xhr.responseType === 'text') {
+            data = xhr.responseText;
+        } else if (xhr.responseType === 'document') {
+            data = xhr.responseXML;
+        } else {
+            data = xhr.response;
+        }
+        return data;
+    }
+</script>
+
+</body>
+</html>

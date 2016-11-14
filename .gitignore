@@ -1,0 +1,9 @@
+.idea
+**/*.iml
+
+**/node_modules
+**/*.js
+**/*.js.map
+
+!server/gulp/**/*.js
+!server/gulpfile.js

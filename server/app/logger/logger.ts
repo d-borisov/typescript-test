@@ -2,7 +2,7 @@ import * as winston from 'winston';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as util from 'util';
-import * as Project from 'tts4t';
+import {Configuration} from 'prj';
 import config from '../configuration/config';
 
 export function getLogger(label: string): winston.LoggerInstance {
@@ -31,7 +31,7 @@ export function getLogger(label: string): winston.LoggerInstance {
   });
 }
 
-function consoleTransport(label: string, level: Project.Configuration.LogLevelType): winston.ConsoleTransportInstance {
+function consoleTransport(label: string, level: Configuration.LogLevelType): winston.ConsoleTransportInstance {
   return new (winston.transports.Console)({
     label: label,
     level: level,

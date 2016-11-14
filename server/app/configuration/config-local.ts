@@ -1,13 +1,13 @@
 import {
   Configuration
-} from 'tts4t';
+} from 'prj';
 
 const SERVER: Configuration.ServerConfig = {
   port: '3000',
   url: 'http://localhost:3000'
 };
 
-const DATABASE_TO_VALIDATE_SCHEME: string = 'tts4trivium-migrations-from-models';
+const DATABASE_TO_VALIDATE_SCHEME: string = 'prj-migrations-from-models';
 
 const DATABASE: Configuration.DatabaseConfig = {
   name: 'db_name',

@@ -7,4 +7,6 @@ export default {
   getCheckDirectPromise: '/check-direct-promise',
   getTestTypes: '/test-types',
   getTestNamespace: '/test-namespace',
+  getPromiseRejection: '/promise-rejection',
+  getErrorThrown: '/error-thrown'
 };

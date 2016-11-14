@@ -9,7 +9,7 @@ import CommonRoutes from '../../../common/routes/CommonRoutes';
 import GreetingsRoutes from '../../../common/routes/GreetingsRoutes';
 import {
   Project
-} from 'tts4t';
+} from 'prj';
 
 @Controller(CommonRoutes.api)
 export default class GreetingsController extends BaseController {
@@ -69,8 +69,8 @@ export default class GreetingsController extends BaseController {
     this.logger.debug('getTestTypes called');
     this.logger.debug('getTestTypes. Response is: ' + util.inspect(res));
 
-    res.local1 = {name: 'some'};
-    this.logger.debug('getTestTypes. Response.local1 is: ' + util.inspect(res.local1));
+    res.local = {name: 'some'};
+    this.logger.debug('getTestTypes. Response.local1 is: ' + util.inspect(res.local));
 
     return new Promise(resolve => {
       setTimeout(() => resolve(`OK! ${req.originalUrl}: ${req.local}! Response: ${res}`), 1000);
@@ -89,6 +89,22 @@ export default class GreetingsController extends BaseController {
     return new Promise(resolve => {
       setTimeout(() => resolve(`OK! Object: ${util.inspect(another)}`), 1000);
     });
+  }
+
+  @Get(GreetingsRoutes.getPromiseRejection)
+  getPromiseRejection(): Promise<string> {
+    this.logger.debug('getPromiseRejection called');
+
+    return new Promise((resolve, reject) => {
+      setTimeout(() => reject('Rejected promise'), 1000);
+    });
+  }
+
+  @Get(GreetingsRoutes.getErrorThrown)
+  async getErrorThrown() {
+    this.logger.debug('getErrorThrown called');
+
+    throw new Error('Error thrown');
   }
 
 }

@@ -1,4 +1,4 @@
-declare module 'tts4t' {
+declare module 'prj' {
 
   import * as express from 'express';
   import * as Sequelize from 'sequelize';
@@ -14,45 +14,17 @@ declare module 'tts4t' {
     }
 
     interface Response extends express.Response {
-      local1? : {
-        name: string
+      local: {
+        name: string;
       }
     }
 
     interface Request extends express.Request {
       local?: {
-        language: string;
-        geoip: IGeoipData;
         user?: any;
-        auth?: {
-          username: string;
-        },
-      }
-      some?: string;
-      assertValid(): void;
+      },
+      some: string;
     }
-
-    interface IGeoipData {
-      ip: string;
-      countryA2Code: string;
-    }
-
-    export interface Model<TInstance, TAttributes> extends Sequelize.Model<TInstance, TAttributes>, ClassMethods {
-      addScope(name: string, scope: Sequelize.FindOptions | Function, options?: {override: boolean});
-    }
-
-    export interface ClassMethods {
-      associate(models): void;
-      addScopes?(models): void;
-    }
-
-    export interface IPageable<T> {
-      limit: number;
-      offset: number;
-      searchString: string;
-      filter: T;
-    }
-
   }
 
   namespace Configuration {
@@ -213,7 +185,6 @@ declare module 'tts4t' {
       DATE_TIME_FORMAT: string;
       test: EnvConfig;
       local: EnvConfig;
-      migrations: EnvConfig;
     }
   }
 }

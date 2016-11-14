@@ -1,11 +1,13 @@
-import * as Project from 'tts4t';
+import {
+  Configuration
+} from 'prj';
 
-const SERVER: Project.Configuration.ServerConfig = {
+const SERVER: Configuration.ServerConfig = {
   port: '3000',
   url: 'http://localhost:3000'
 };
 
-const DATABASE: Project.Configuration.DatabaseConfig = {
+const DATABASE: Configuration.DatabaseConfig = {
   name: 'db_name_test',
   username: 'postgres',
   password: '1234',
@@ -23,7 +25,7 @@ const DATABASE: Project.Configuration.DatabaseConfig = {
   }
 };
 
-const LOG: Project.Configuration.LogConfig = {
+const LOG: Configuration.LogConfig = {
   transports: [
      {
        type: 'console',
@@ -33,7 +35,7 @@ const LOG: Project.Configuration.LogConfig = {
 };
 
 
-export default <Project.Configuration.EnvConfig> {
+export default <Configuration.EnvConfig> {
   server: SERVER,
   database: DATABASE,
   log: LOG,

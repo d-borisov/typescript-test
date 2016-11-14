@@ -1,11 +1,10 @@
-import * as Project from 'tts4t';
+import {Configuration} from 'prj';
 import {MODE} from './env';
 import ConfigLocal from './config-local';
 import ConfigTest from './config-test';
-import ConfigMigrations from './config-migrations';
 
-const config: Project.Configuration.FullConfiguration = {
-  env: function (): Project.Configuration.EnvConfig {
+const config: Configuration.FullConfiguration = {
+  env: function (): Configuration.EnvConfig {
     if (process.env.mode == null) {
       console.error('Error! process.env.mode not specified!');
       process.exit(1);
@@ -31,8 +30,7 @@ const config: Project.Configuration.FullConfiguration = {
   DATE_FORMAT: 'YYYY-MM-DD',
   DATE_TIME_FORMAT: 'YYYY-MM-DD HH:mm:ss',
   test: ConfigTest,
-  local: ConfigLocal,
-  migrations: ConfigMigrations
+  local: ConfigLocal
 };
 
 export default config;
